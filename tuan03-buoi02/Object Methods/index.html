@@ -1,0 +1,33 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object Methods</title>
+  </head>
+  <body>
+    <p id="demo"></p>
+  </body>
+  <script>
+    // create an object
+    const person = {
+      firstName: "John",
+      lastName: "Doe",
+      id: 5566,
+      fullName: function () {
+        return this.firstName + " " + this.lastName;
+      },
+    };
+    document.getElementById("demo").innerHTML = person.fullName(); // John Doe
+    // khong xoa duoc thuoc tinh function trong object
+    delete person.fullName();
+    console.log(person.fullName()); // John Doe
+    // Adding a Method to an Object
+    person.name = function () {
+        return this.firstName + " " + this.lastName;
+    };
+    console.log("my father is " + person.name()); // my father is John Doe
+    console.log(person);
+    // Using Built-In Methods (phuong thuc tich hop)
+    console.log(person.firstName.toUpperCase()); // in hoa => JOHN
+  </script>
+</html>

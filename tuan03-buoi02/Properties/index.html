@@ -1,0 +1,81 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Properties</title>
+  </head>
+  <body>
+    <p id="demo"></p>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+  </body>
+  <script>
+    const person = {
+      firstname: "John",
+      lastname: "Doe",
+      age: 50,
+      eyecolor: "blue",
+    };
+    // Accessing JavaScript Properties (truy cap thuoc tinh js)
+    // syntax
+    const Properties = () => {
+      document.getElementById("demo").innerHTML =
+        person.firstname + "is" + person.age + "year old."; // John is 50 year old.
+      //or
+      document.getElementById("demo").innerHTML =
+        person["firstname"] + "is" + person["age"] + "year old."; // John is 50 year old.
+    };
+    Properties();
+
+    // for...in lap qua cac thuoc tinh cua doi tuong
+    const loopForin = () => {
+      for (const x in person) {
+        document.getElementById("demo1").innerHTML += person[x] + " ";
+      }
+    };
+    loopForin();
+
+    // adding new properties ( them thuoc tinh)
+    const addNew = () => {
+      person.nationality = "English";
+      document.getElementById("demo2").innerHTML =
+        person.firstname + " " + "is" + " " + person.nationality;
+    };
+    addNew();
+    // Deleting properties (xoa thuoc tinh)
+    const delteteProperti = () => {
+      delete person.age;
+      console.log(person.age); // underfined
+    };
+    delteteProperti();
+    // Nested properties (gia tri trong 1 doi tuong co the la 1 doi tuong khac)
+    const nestedProperties = () => {
+      person.car = {
+        car1: "ford",
+        car2: "bmw",
+        car3: "audi",
+      };
+      console.log(person); // {firstname: "John", lastname: "Doe", eyecolor: "blue", nationality: "English", car: {car1 : "ford", car2 : "bmw", car3 : "audi"}}
+      console.log(person.car.car1); // ford
+    };
+    nestedProperties();
+    // Nested Arrays and Objects
+    const nestedArray = () => {
+      delete person.car;
+      person.cars = [
+        { name: "ford", models: ["Fiesta", "Focus", "Mustang"] },
+        { name: "BMW", models: ["320", "X3", "X5"] },
+        { name: "Fiat", models: ["500", "Panda"] },
+      ];
+      let tag = "";
+      for (const i in person.cars) {
+        tag += `<h1>${person.cars[i].name}</h1>`;
+        for (const j in person.cars[i].models) {
+          tag += person.cars[i].models[j];
+        }
+      }
+      console.log(tag); // <h1>ford</h1>FiestaFocusMustang<h1>BMW</h1>320X3X5<h1>Fiat</h1>500Panda
+    };
+    nestedArray();
+  </script>
+</html>

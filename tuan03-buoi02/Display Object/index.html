@@ -1,0 +1,33 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Display JavaScript Objects</title>
+  </head>
+  <body>
+    <p id="demo"></p>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo3"></p>
+  </body>
+  <script>
+    const person = {
+      name: "John",
+      age: 30,
+      city: "New York",
+    };
+    document.getElementById("demo").innerHTML = person // [objests objects]
+
+    // Displaying the Object Properties by name
+    document.getElementById("demo").innerHTML = person.name + "," + " " + person.age + "," + " " + person.city // John, 30, New York
+    // Displaying the Object Properties in a Loop
+    for (const i in person) {
+       document.getElementById("demo1").innerHTML += person[i]  + " "; // John 30 New York
+    }
+    // Displaying the Object using Object.values()
+    document.getElementById("demo2").innerHTML = Object.values(person); // John,30,New York
+    console.log(Object.values(person.name)); // J,o,h,n : la 1 array
+    // Displaying the Object using JSON.stringify() <xau chuoi>
+        document.getElementById("demo3").innerHTML = JSON.stringify(person) // {"name":"John","age":30,"city":"New York"}
+  </script>
+</html>
